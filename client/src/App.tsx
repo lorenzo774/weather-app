@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { weatherByCity } from "./api/weather";
+import LoadingSpinner from "./components/LoadingSpinner";
 import Search from "./components/Search";
-import WeatherInfo from "./components/WeatherInfo";
+import WeatherList from "./components/WeatherList";
 
 const App = () => {
-    const [result, setResult] = useState<{}>({});
+    const [loading, setLoading] = useState(false);
+    const [result, setResult] = useState<{ data: [] }>({ data: [] });
 
-    const search = async (city: string) => {
-        const data = await weatherByCity(city, "it");
-        console.log(data);
+    const search = async (city: string, country: string) => {
+        setLoading(true);
+        const data = await weatherByCity(city, country);
         setResult(data);
+        setLoading(false);
     };
 
     return (
@@ -18,7 +21,13 @@ const App = () => {
                 <h1>Weather App</h1>
             </header>
             <Search onSearch={search} />
-            <WeatherInfo result={result} />
+            <main>
+                {!loading ? (
+                    <WeatherList infos={result.data} />
+                ) : (
+                    <LoadingSpinner />
+                )}
+            </main>
         </>
     );
 };

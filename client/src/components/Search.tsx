@@ -18,28 +18,24 @@ const Search = ({ onSearch }: SearchProps) => {
 
     return (
         <div className="search-bar">
-            <div className="fields">
-                <div className="field">
-                    <label htmlFor="city">City</label>
-                    <input
-                        onChange={(e) => setCity(e.target.value)}
-                        onKeyDown={triggerSearch}
-                        name="city"
-                    />
-                </div>
-                <div className="field">
-                    <label htmlFor="country">Country</label>
-                    <input
-                        onChange={(e) => setCity(e.target.value)}
-                        onKeyDown={triggerSearch}
-                        name="country"
-                    />
-                </div>
+            <div>
+                <input
+                    placeholder="City..."
+                    onChange={(e) => setCity(e.target.value)}
+                    onKeyDown={triggerSearch}
+                    name="city"
+                />
+                <input
+                    placeholder="Country code (it, uk) ..."
+                    onChange={(e) => setCountry(e.target.value)}
+                    onKeyDown={triggerSearch}
+                    name="country"
+                />
+                <FontAwesomeIcon
+                    onClick={() => onSearch(city, country)}
+                    icon={faSearch}
+                />
             </div>
-            <FontAwesomeIcon
-                onClick={() => onSearch(city, country)}
-                icon={faSearch}
-            />
         </div>
     );
 };

@@ -1,4 +1,5 @@
 @import "./vars.scss";
+@import "./spinner.scss";
 @import "https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap";
 
 * {
@@ -6,10 +7,18 @@
     padding: 0;
 }
 
-body {
+body,
+input {
     font-family: Inter;
     background: $bg;
     color: $fg;
+}
+
+input {
+    border: 2px solid white;
+    border-radius: $border-radius;
+    padding: 10px;
+    outline: none;
 }
 
 header {
@@ -17,24 +26,59 @@ header {
     padding: 2rem 0;
 }
 
-svg {
-    cursor: pointer;
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        cursor: pointer;
+        transition: all ease 0.3s;
+
+        &:hover {
+            color: $svg-hover;
+        }
+    }
 }
 
 .search-bar {
+    padding: $def-padding;
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    .fields {
+    div {
         display: flex;
+        align-items: center;
 
+        gap: 10px;
+    }
+}
+
+.weather-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+
+    .weather {
+        max-width: 90%;
+        width: 20rem;
+        border: 2px solid white;
+        border-radius: $border-radius;
+        padding: $def-padding;
+        display: flex;
         flex-direction: column;
+        gap: 10px;
 
-        .field {
+        div {
             display: flex;
-            label {
-                flex: 1;
-            }
+            align-items: center;
+        }
+
+        .info,
+        .sunrise-sunset {
+            display: block;
         }
     }
 }
