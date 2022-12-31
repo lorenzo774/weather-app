@@ -1,0 +1,40 @@
+@import "./vars.scss";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Inter;
+    background: $bg;
+    color: $fg;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+
+    .fields {
+        display: flex;
+
+        flex-direction: column;
+
+        .field {
+            display: flex;
+            label {
+                flex: 1;
+            }
+        }
+    }
+}
