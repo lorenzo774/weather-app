@@ -22,8 +22,8 @@ input {
 }
 
 header {
-    text-align: center;
     padding: 2rem 0;
+    text-align: center;
 }
 
 main {
@@ -39,6 +39,26 @@ main {
             color: $svg-hover;
         }
     }
+
+    .weather-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .weather {
+            border: 2px solid white;
+            border-radius: $border-radius;
+            padding: $def-padding;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .info,
+            .sunrise-sunset {
+                display: block;
+            }
+        }
+    }
 }
 
 .search-bar {
@@ -46,39 +66,13 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
 
     div {
         display: flex;
-        align-items: center;
-
-        gap: 10px;
-    }
-}
-
-.weather-list {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    align-items: center;
-
-    .weather {
-        max-width: 90%;
-        width: 20rem;
-        border: 2px solid white;
-        border-radius: $border-radius;
-        padding: $def-padding;
-        display: flex;
         flex-direction: column;
+        align-items: center;
+        width: min-content;
         gap: 10px;
-
-        div {
-            display: flex;
-            align-items: center;
-        }
-
-        .info,
-        .sunrise-sunset {
-            display: block;
-        }
     }
 }

@@ -11,8 +11,8 @@ const Search = ({ onSearch }: SearchProps) => {
     const [country, setCountry] = useState<string>("");
 
     const triggerSearch = ({ key }: React.KeyboardEvent<HTMLInputElement>) => {
-        if (key === "Enter") {
-            onSearch(city, country);
+        if (key === "Enter" && city !== "") {
+            onSearch(city, country || "it");
         }
     };
 
@@ -31,11 +31,11 @@ const Search = ({ onSearch }: SearchProps) => {
                     onKeyDown={triggerSearch}
                     name="country"
                 />
-                <FontAwesomeIcon
-                    onClick={() => onSearch(city, country)}
-                    icon={faSearch}
-                />
             </div>
+            <FontAwesomeIcon
+                onClick={() => onSearch(city, country)}
+                icon={faSearch}
+            />
         </div>
     );
 };
