@@ -26,9 +26,14 @@ header {
     text-align: center;
 }
 
-main {
+.icon-value {
     display: flex;
-    align-items: center;
+    gap: $icon-gap;
+}
+
+main {
+    width: 100%;
+    display: flex;
     justify-content: center;
 
     svg {
@@ -41,32 +46,37 @@ main {
     }
 
     .weather-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        max-width: 30rem;
 
         .weather {
-            border: 2px solid white;
-            border-radius: $border-radius;
-            padding: $def-padding;
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
 
-            .info,
+            .description {
+                margin-bottom: 10px;
+            }
+
+            .wind-speed,
+            .temp,
+            .sunrise-sunset div {
+                @extend .icon-value;
+            }
+
             .sunrise-sunset {
-                display: block;
+                align-items: center;
+                display: flex;
+                gap: $elements-gap;
             }
         }
     }
 }
 
 .search-bar {
-    padding: $def-padding;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: $elements-gap;
 
     div {
         display: flex;

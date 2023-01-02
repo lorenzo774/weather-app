@@ -1,4 +1,9 @@
-import { faCloud, faWind } from "@fortawesome/free-solid-svg-icons";
+import {
+    faSun,
+    faMoon,
+    faWind,
+    faTemperature0,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type WeatherInfo = {
@@ -18,23 +23,32 @@ type WeatherInfo = {
 
 const WeatherInfo = ({ info }: WeatherInfo) => (
     <div className="weather">
-        <div className="locate">
-            <p>
-                <b>{info.city_name}</b>, {info.country_code}
-            </p>
-        </div>
-        <div className="info">
+        <div>
+            <div className="locate">
+                <p>
+                    <b>{info.city_name}</b>, {info.country_code}
+                </p>
+            </div>
             <img src={`./icons/${info.weather.icon}.png`} />
-            <p>{info.weather.description}</p>
-            <p>{info.app_temp}°</p>
-        </div>
-        <div className="wind-speed">
-            <FontAwesomeIcon icon={faWind} />
-            <p>{info.wind_spd} m/s</p>
+            <p className="description">{info.weather.description}</p>
+            <div className="temp">
+                <FontAwesomeIcon icon={faTemperature0} />
+                <p>{info.app_temp}°</p>
+            </div>
+            <div className="wind-speed">
+                <FontAwesomeIcon icon={faWind} />
+                <p>{info.wind_spd} m/s</p>
+            </div>
         </div>
         <div className="sunrise-sunset">
-            <p>Sunrise: {info.sunrise}</p>
-            <p>Sunset: {info.sunset}</p>
+            <div>
+                <FontAwesomeIcon icon={faSun} />
+                <p>{info.sunrise}</p>
+            </div>
+            <div>
+                <FontAwesomeIcon icon={faMoon} />
+                <p>{info.sunset}</p>
+            </div>
         </div>
     </div>
 );
